@@ -1,20 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  User, 
-  Mail, 
-  Search, 
-  Plus, 
-  Edit, 
-  Trash2, 
-  Grid, 
-  List, 
-  ChevronLeft, 
-  ChevronRight,
-  Eye,
-  EyeOff,
-  Loader,
-  X
-} from 'lucide-react';
+// import { 
+//   User, 
+//   Mail, 
+//   Search, 
+//   Plus, 
+//   Edit, 
+//   Trash2, 
+//   Grid, 
+//   List, 
+//   ChevronLeft, 
+//   ChevronRight,
+//   Eye,
+//   EyeOff,
+//   Loader,
+//   X
+// } from 'lucide-react'; 
+// SVG Icons
+const UserIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+    <circle cx="12" cy="7" r="4"/>
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="m21 21-4.35-4.35"/>
+  </svg>
+);
+
+const PlusIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <path d="M5 12h14"/>
+    <path d="M12 5v14"/>
+  </svg>
+);
+
+const EditIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <polyline points="3,6 5,6 21,6"/>
+    <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+    <line x1="10" y1="11" x2="10" y2="17"/>
+    <line x1="14" y1="11" x2="14" y2="17"/>
+  </svg>
+);
+
+const GridIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <rect x="3" y="3" width="7" height="7"/>
+    <rect x="14" y="3" width="7" height="7"/>
+    <rect x="14" y="14" width="7" height="7"/>
+    <rect x="3" y="14" width="7" height="7"/>
+  </svg>
+);
+
+const ListIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <line x1="8" y1="6" x2="21" y2="6"/>
+    <line x1="8" y1="12" x2="21" y2="12"/>
+    <line x1="8" y1="18" x2="21" y2="18"/>
+    <line x1="3" y1="6" x2="3.01" y2="6"/>
+    <line x1="3" y1="12" x2="3.01" y2="12"/>
+    <line x1="3" y1="18" x2="3.01" y2="18"/>
+  </svg>
+);
+
+const ChevronLeftIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <polyline points="15,18 9,12 15,6"/>
+  </svg>
+);
+
+const ChevronRightIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <polyline points="9,18 15,12 9,6"/>
+  </svg>
+);
+
+const EyeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+);
+
+const EyeOffIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+    <line x1="1" y1="1" x2="23" y2="23"/>
+  </svg>
+);
+
+const LoaderIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="18" x2="12" y2="22"/>
+    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+    <line x1="2" y1="12" x2="6" y2="12"/>
+    <line x1="18" y1="12" x2="22" y2="12"/>
+    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+  </svg>
+);
+
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+);
+
 
 // Simulated Redux store with React hooks
 const useStore = () => {
@@ -241,7 +345,10 @@ const Login = ({ onLogin }) => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <div className="text-center mb-8">
-          <User className="mx-auto h-12 w-12 text-blue-500 mb-4" />
+        <div className="mx-auto h-12 w-12 text-blue-500 mb-4 flex justify-center">
+            <UserIcon />
+          </div>
+         
           <h2 className="text-2xl font-bold text-gray-900">Sign In</h2>
         </div>
         
@@ -281,7 +388,7 @@ const Login = ({ onLogin }) => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
               </button>
             </div>
             {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
@@ -303,7 +410,7 @@ const Login = ({ onLogin }) => {
             disabled={loading}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 flex items-center justify-center"
           >
-            {loading ? <Loader className="animate-spin mr-2" size={18} /> : null}
+            {loading ? <LoaderIcon className="animate-spin mr-2 w-4 h-4" /> : null}
             {loading ? 'Signing in...' : 'Log in'}
           </button>
         </div>
@@ -382,7 +489,7 @@ const UserModal = ({ isOpen, onClose, user, onSave }) => {
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600"
           >
-            <X size={20} />
+            <XIcon />
           </button>
         </div>
         
@@ -461,7 +568,7 @@ const UserModal = ({ isOpen, onClose, user, onSave }) => {
               disabled={loading}
               className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 flex items-center"
             >
-              {loading ? <Loader className="animate-spin mr-2" size={16} /> : null}
+              {loading ? <LoaderIcon className="animate-spin mr-2 w-4 h-4" /> : null}
               {loading ? 'Saving...' : 'Save'}
             </button>
           </div>
@@ -555,13 +662,13 @@ const UsersDashboard = ({ onLogout }) => {
           onClick={() => handleEditUser(user)}
           className="p-2 text-blue-600 hover:bg-blue-50 rounded-md"
         >
-          <Edit size={16} />
+          <EditIcon />
         </button>
         <button
           onClick={() => setShowDeleteConfirm(user.id)}
           className="p-2 text-red-600 hover:bg-red-50 rounded-md"
         >
-          <Trash2 size={16} />
+          <TrashIcon />
         </button>
       </div>
     </div>
@@ -616,7 +723,9 @@ const UsersDashboard = ({ onLogout }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
-              <User className="h-8 w-8 text-blue-500 mr-3" />
+              <div className="h-8 w-8 text-blue-500 mr-3">
+                <UserIcon />
+              </div>
               <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
             </div>
             <button
@@ -633,8 +742,11 @@ const UsersDashboard = ({ onLogout }) => {
         {/* Controls */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+            <div className="relative"> 
+            <div className="absolute left-3 top-3 h-4 w-4 text-gray-400">
+                <SearchIcon />
+              </div>
+             
               <input
                 type="text"
                 placeholder="Search users..."
@@ -647,7 +759,7 @@ const UsersDashboard = ({ onLogout }) => {
               onClick={handleCreateUser}
               className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center"
             >
-              <Plus size={16} className="mr-2" />
+              <PlusIcon />
               Create User
             </button>
           </div>
@@ -659,7 +771,7 @@ const UsersDashboard = ({ onLogout }) => {
                 state.viewMode === 'list' ? 'bg-blue-500 text-white' : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
-              <List size={16} />
+              <ListIcon />
             </button>
             <button
               onClick={() => dispatch({ type: 'SET_VIEW_MODE', payload: 'card' })}
@@ -667,7 +779,7 @@ const UsersDashboard = ({ onLogout }) => {
                 state.viewMode === 'card' ? 'bg-blue-500 text-white' : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
-              <Grid size={16} />
+              <GridIcon />
             </button>
           </div>
         </div>
@@ -675,7 +787,7 @@ const UsersDashboard = ({ onLogout }) => {
         {/* Loading */}
         {state.loading && (
           <div className="flex justify-center items-center py-12">
-            <Loader className="animate-spin h-8 w-8 text-blue-500" />
+            <LoaderIcon className="animate-spin mr-2 w-4 h-4" />
           </div>
         )}
 
@@ -732,14 +844,14 @@ const UsersDashboard = ({ onLogout }) => {
               disabled={state.currentPage === 1}
               className="px-3 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeftIcon />
             </button>
             <button
               onClick={() => dispatch({ type: 'SET_CURRENT_PAGE', payload: state.currentPage + 1 })}
               disabled={state.currentPage === state.totalPages}
               className="px-3 py-2 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
-              <ChevronRight size={16} />
+              <ChevronRightIcon />
             </button>
           </div>
         </div>
